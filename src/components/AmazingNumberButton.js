@@ -16,7 +16,7 @@ import React from 'react';
             <button onClick={() => props.updateCalcParent('0')}>0</button>
             <button onClick={() => props.updateCalcParent('.')}>.</button>
             <button onClick={() => props.calculateParent()}>=</button>
-            <button>Save</button>
+            <button onClick={() => props.insertResultsParent()}>Save</button>
         </div>
   );
 }
