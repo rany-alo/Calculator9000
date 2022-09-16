@@ -60,7 +60,11 @@ button:hover {
   background-color: black;
 }
 
-.save {
+.save {  
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.save lu {
+  flex: 1 1 33.33%;
 }

@@ -25,7 +25,7 @@ import {useState} from 'react';
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: 'resultat='+calc
       })
-      console.log(calc);}
+       }
 
 
 
@@ -64,7 +64,8 @@ import {useState} from 'react';
              insertResultsParent = {insertResults}/>
           </div>
           <div className="save">
-            {lastResults.map(result1 => <div key= {result1.id} ><p>{result1.results}</p></div>)}
+            <div><h3>Saved Results</h3>{lastResults.map(result1 => <div key= {result1.id} ><p>{result1.results}</p></div>)}</div>
+            <div><h3>Saved date</h3>{lastResults.map(result1 => <div key= {result1.id} ><p>{result1.created_at}</p></div>)}</div>
           </div>
       </div>
       )
