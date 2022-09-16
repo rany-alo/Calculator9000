@@ -19,12 +19,13 @@ import {useState} from 'react';
           fetchData()
        }, [])
 
-      const insertResults = async () => { 
+      const insertResults = async () => {
         await fetch('http://localhost/calculator9000/src/backend/insertResults.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: calc
-      })}
+        body: 'resultat='+calc
+      })
+      console.log(calc);}
 
 
 
@@ -62,8 +63,8 @@ import {useState} from 'react';
             <AmazingNumberButton updateCalcParent = {updateCalc} calculateParent = {calculate} 
              insertResultsParent = {insertResults}/>
           </div>
-          <div>
-            {lastResults.map(result1 => <p>{result1.results}</p>)}
+          <div className="save">
+            {lastResults.map(result1 => <div key= {result1.id} ><p>{result1.results}</p></div>)}
           </div>
       </div>
       )

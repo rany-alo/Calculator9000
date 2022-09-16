@@ -1,12 +1,14 @@
 <?php
-    require_once "database.php";     
-
+require_once "database.php";     
 header('Access-Control-Allow-Origin: *');
+
  $db = getdb();
+ $result = $_POST['resultat'];
 try {
-    $insert_stmt= $this->db->prepare("INSERT INTO LastResults (id,results) VALUES ('',:result)");           
-    $insert_stmt->execute(array(':result' => $result));
+    $insert_stmt= $db->prepare("INSERT INTO lastResults (results) VALUES (:result);");
+    $insert_stmt->bindParam(':result', $result);          
+    $insert_stmt->execute();
 } catch(Exception $e)  {
-    $e->getMessage();
+    echo $e->getMessage();
 }
 ?>
