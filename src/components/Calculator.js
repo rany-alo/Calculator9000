@@ -1,8 +1,10 @@
+/* eslint-disable no-eval */
 import React, { useEffect } from "react";
 import TheTitle from "./TheTitle";
 import BeautifulScreen from "./BeautifulScreen";
 import AmazingNumberButton from "./AmazingNumberButton";
 import GreatOperationButton from "./GreatOperationButton";
+import ItSOverNineThousand from "./ItSOverNineThousand";
 import '../App.css';
 import {useState} from 'react';
 
@@ -30,6 +32,7 @@ import {useState} from 'react';
 
 
       const [calc, setCalc] = useState("");
+      const [res,setRes] = useState("");
       const ops = ['/', '*', '+', '-', '.'];
 
       const updateCalc = value => {
@@ -38,8 +41,8 @@ import {useState} from 'react';
           setCalc(calc + value);
       }
       const calculate = () => {
-        // eslint-disable-next-line no-eval
-        setCalc(eval(calc).toString());
+        setRes(eval(calc))
+        setCalc(eval(calc.toString()))
       }
       const deleteLast = () => {
         if (calc === '') {return;}
@@ -49,12 +52,12 @@ import {useState} from 'react';
 
       return (
         <div className='Calculator'>
-          <div><TheTitle/></div>
+          <div>
+            <TheTitle/>
+            {res > 9000 && <ItSOverNineThousand/>}
+            </div>
           <div className='BeautifulScreen'>
             <BeautifulScreen calcP = {calc}/>
-            {
-              calc > 9000 && setCalc('It’s Over 9000 !!')
-            }
           </div>
           <div>
             <GreatOperationButton updateCalcParent = {updateCalc} deleteLastParent = {deleteLast}/>
